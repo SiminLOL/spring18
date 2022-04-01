@@ -73,4 +73,6 @@ class Planet{
 		String imgName="images/" + imgFileName;
 		StdDraw.picture(xxPos,yyPos,imgName);
 	}
+
+
 }
