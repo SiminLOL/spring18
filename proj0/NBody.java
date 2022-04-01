@@ -14,9 +14,9 @@ public class NBody {
 		int num=in.readInt();
 		double radius=in.readDouble();
 		Planet[] plt;
-		plt=new Planet[5];
+		plt=new Planet[num];
 		
-		for(int i=0;i<5;i+=1){
+		for(int i=0;i<num;i+=1){
 			
 			double xPos=in.readDouble();
 			double yPos=in.readDouble();
@@ -38,6 +38,7 @@ public class NBody {
 		String fileName=args[2]; 
 		Planet[] plt= readPlanets(fileName);
 		double radius=readRadius(fileName);
+		int x=plt.length;
 
 		/* Drawing the background*/
 		String imageToDraw="images/starfield.jpg";
@@ -46,7 +47,7 @@ public class NBody {
 
 		/*drawing all of the planets*/
 		int n;
-		for(n=0;n<5;n+=1){
+		for(n=0;n<x;n+=1){
 			plt[n].draw();
 		}
 
@@ -56,15 +57,15 @@ public class NBody {
 		/*animation*/
 		double temps=0;
 		for(temps=0;temps<T;temps+=dt){
-			double[] xForces=new double[5];
-			double[] yForces=new double[5];
-			for(int i=0;i<5;i+=1){
+			double[] xForces=new double[x];
+			double[] yForces=new double[x];
+			for(int i=0;i<x;i+=1){
 				double Fx=plt[i].calcNetForceExertedByX(plt);
 				xForces[i]=Fx;
 				double Fy=plt[i].calcNetForceExertedByY(plt);
 				yForces[i]=Fy;
 			}
-				for(int j=0;j<5;j+=1){
+				for(int j=0;j<x;j+=1){
 					plt[j].update(dt,xForces[j],yForces[j]);
 				}
 				
