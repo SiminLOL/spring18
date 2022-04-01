@@ -39,6 +39,18 @@ class Planet{
 		return G*mass*p1.mass/r/r ;
 	}
 
+	public double calcForceExertedByX(Planet other) {
+        double dist = calcDistance(other);
+        double force = calcForceExertedBy(other);
+        return (other.xxPos - this.xxPos) / dist * force;
+    }
+
+    public double calcForceExertedByY(Planet other) {
+        double dist = calcDistance(other);
+        double force = calcForceExertedBy(other);
+        return (other.yyPos - this.yyPos) / dist * force;
+    }
+
 	public double calcNetForceExertedByX(Planet[] ps){
 		double netX=0;
 		for(Planet i:ps){
